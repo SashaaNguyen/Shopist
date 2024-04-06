@@ -79,7 +79,6 @@ export default class Cart extends BasePage{
     }
 
     static nonStopClicking() {
-        // Loop continuously until the "plus" button is disabled
         cy.get(this.plus).then(($btn) => {
             let isButtonDisabled = $btn.hasClass('disabled');
     
@@ -87,7 +86,7 @@ export default class Cart extends BasePage{
                 
                 this.increaseAmount();
     
-                // Check if the "plus" button is disabled
+                
                 cy.get(this.plus).then(($updatedBtn) => {
                     isButtonDisabled = $updatedBtn.hasClass('disabled');
                 });

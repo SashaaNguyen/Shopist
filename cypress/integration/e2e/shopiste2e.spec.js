@@ -165,7 +165,7 @@ describe("Discount code test suite",()=>{
         HomePage.Visible()
     })
 
-    it.only("Coupon is invalid message appears if the code is invalid",()=>{
+    it("Coupon is invalid message appears if the code is invalid",()=>{
         HomePage.clickShopNow()
         BasePage.goBack()
         HomePage.clickChairs()
@@ -212,15 +212,17 @@ describe("My Profile test suite",()=>{
         MyProfile.formLoaded()
     })
 
-
-    it("Edit profile page displays correctly",()=>{
-       
+    it.only("User can fill inputs with his info and save changes",()=>{
         Navbar.click("myProfile")
         MyProfile.loaded()
         MyProfile.click('editBtn')
         MyProfile.formLoaded()
-        
+        MyProfile.clearInput()
+        MyProfile.fillInput()
+        MyProfile.click("saveProfile")
+        MyProfile.verifyBanner()
     })
+
 
     it("User can upload profile picture",()=>{
         

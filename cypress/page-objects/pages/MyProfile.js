@@ -11,6 +11,12 @@ export default class MyProfile extends BasePage{
     static pictureBtn = "#picture"
     static uploadBtn = "label[class='button inline']"
     static fName = "#firstname"
+    static lName = "#lastname";
+    static address1 = "#address1";
+    static address2 = "#address2";
+    static city = "#addressCity";
+    static zipCode = "#addressZipcode";
+    static phone = "#phone"
     static saveProfile = ".button.big.inverted"
     static errorMsg = ".error"
     static formInputs = ".input-field"
@@ -49,6 +55,19 @@ export default class MyProfile extends BasePage{
         cy.isVisible(this.editProfileForm)
     }
 
+    static fillInput(){
+        cy.fixture('cart.json').then((data)=>{
+            cy.get(this.fName).type(data.Firstname);
+            cy.get(this.lName).type(data.Lastname);
+            cy.get(this.address1).type(data.Address);
+            cy.get(this.address2).type(data.Address2);
+            cy.get(this.city).type(data.City);
+            cy.get(this.zipCode).type(data.Zipcode);
+            cy.get(this.phone).type(data.Phonenumber);
+
+        })
+    }
+
     static uploadingPhoto() {
         const filePath = "Cart shopist.png";
         cy.get(this.pictureBtn)
@@ -68,6 +87,12 @@ export default class MyProfile extends BasePage{
 
     static clearInput(){
         cy.get(this.fName).clear()
+        cy.get(this.lName).clear()
+        cy.get(this.address1).clear()
+        cy.get(this.address2).clear()
+        cy.get(this.city).clear()
+        cy.get(this.zipCode).clear()
+        cy.get(this.phone).clear()
     }
     
 }

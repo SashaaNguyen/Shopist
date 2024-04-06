@@ -26,8 +26,11 @@ module.exports = defineConfig({
     openMode: 4,
   },
   projectId: 'dhyf96',
+  reporter: 'cypress-mochawesome-reporter',
   e2e: {
-    setupNodeEvents(on, config) {},
+    setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
+    },
     baseUrl: 'https://www.shopist.io',
     specPattern: './**/*.{js,jsx,ts,tsx}',
   },
